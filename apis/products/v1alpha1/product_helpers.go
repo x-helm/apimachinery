@@ -29,7 +29,7 @@ func (_ Product) CustomResourceDefinition() *apiextensions.CustomResourceDefinit
 	return crds.MustCustomResourceDefinition(GroupVersion.WithResource(ResourceProducts))
 }
 
-func (prod *Product) SetLabels(prodID, prodKey, phase string, ownerID int64) {
+func (prod *Product) ResetLabels(prodID, prodKey, phase string, ownerID int64) {
 	labelMap := map[string]string{
 		apis.LabelProductID:      prodID,
 		apis.LabelProductKey:     prodKey,

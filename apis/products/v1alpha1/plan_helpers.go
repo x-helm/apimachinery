@@ -27,7 +27,7 @@ func (_ Plan) CustomResourceDefinition() *apiextensions.CustomResourceDefinition
 	return crds.MustCustomResourceDefinition(GroupVersion.WithResource(ResourcePlans))
 }
 
-func (plan *Plan) SetLabels(planName, planID, prodID, phase string) {
+func (plan *Plan) ResetLabels(planName, planID, prodID, phase string) {
 	labelMap := map[string]string{
 		apis.LabelPlanName:  planName,
 		apis.LabelPlanID:    planID,
