@@ -1,0 +1,12 @@
+apiVersion: releases.x-helm.dev/v1alpha1
+kind: Bundle
+metadata:
+  labels:
+    app.kubernetes.io/name: bundle
+    app.kubernetes.io/instance: bundle-sample
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: apimachinery
+  name: bundle-sample
+spec:
+  # TODO(user): Add fields here

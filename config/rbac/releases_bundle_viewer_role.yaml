@@ -1,0 +1,27 @@
+# permissions for end users to view bundles.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: bundle-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: apimachinery
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+  name: bundle-viewer-role
+rules:
+- apiGroups:
+  - releases.x-helm.dev
+  resources:
+  - bundles
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - releases.x-helm.dev
+  resources:
+  - bundles/status
+  verbs:
+  - get

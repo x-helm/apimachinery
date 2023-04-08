@@ -1,0 +1,12 @@
+apiVersion: products.x-helm.dev/v1alpha1
+kind: Product
+metadata:
+  labels:
+    app.kubernetes.io/name: product
+    app.kubernetes.io/instance: product-sample
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: apimachinery
+  name: product-sample
+spec:
+  # TODO(user): Add fields here

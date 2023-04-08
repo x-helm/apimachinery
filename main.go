@@ -33,6 +33,8 @@ import (
 
 	chartsv1alpha1 "x-helm.dev/apimachinery/apis/charts/v1alpha1"
 	driversv1alpha1 "x-helm.dev/apimachinery/apis/drivers/v1alpha1"
+	productsv1alpha1 "x-helm.dev/apimachinery/apis/products/v1alpha1"
+	releasesv1alpha1 "x-helm.dev/apimachinery/apis/releases/v1alpha1"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -46,6 +48,8 @@ func init() {
 
 	utilruntime.Must(chartsv1alpha1.AddToScheme(scheme))
 	utilruntime.Must(driversv1alpha1.AddToScheme(scheme))
+	utilruntime.Must(releasesv1alpha1.AddToScheme(scheme))
+	utilruntime.Must(productsv1alpha1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 

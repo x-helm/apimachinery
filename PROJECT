@@ -32,4 +32,32 @@ resources:
   kind: AppRelease
   path: x-helm.dev/apimachinery/apis/drivers/v1alpha1
   version: v1alpha1
+- api:
+    crdVersion: v1
+  domain: x-helm.dev
+  group: releases
+  kind: Bundle
+  path: x-helm.dev/apimachinery/apis/releases/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+  domain: x-helm.dev
+  group: releases
+  kind: Order
+  path: x-helm.dev/apimachinery/apis/releases/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+  domain: x-helm.dev
+  group: products
+  kind: Product
+  path: x-helm.dev/apimachinery/apis/products/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+  domain: x-helm.dev
+  group: products
+  kind: Plan
+  path: x-helm.dev/apimachinery/apis/products/v1alpha1
+  version: v1alpha1
 version: "3"

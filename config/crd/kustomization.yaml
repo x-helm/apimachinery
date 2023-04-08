@@ -5,6 +5,10 @@ resources:
 - bases/charts.x-helm.dev_chartpresets.yaml
 - bases/charts.x-helm.dev_clusterchartpresets.yaml
 - bases/drivers.x-helm.dev_appreleases.yaml
+- bases/releases.x-helm.dev_bundles.yaml
+- bases/releases.x-helm.dev_orders.yaml
+- bases/products.x-helm.dev_products.yaml
+- bases/products.x-helm.dev_plans.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:
@@ -13,6 +17,10 @@ patchesStrategicMerge:
 #- patches/webhook_in_chartpresets.yaml
 #- patches/webhook_in_clusterchartpresets.yaml
 #- patches/webhook_in_appreleases.yaml
+#- patches/webhook_in_bundles.yaml
+#- patches/webhook_in_orders.yaml
+#- patches/webhook_in_products.yaml
+#- patches/webhook_in_plans.yaml
 #+kubebuilder:scaffold:crdkustomizewebhookpatch
 
 # [CERTMANAGER] To enable cert-manager, uncomment all the sections with [CERTMANAGER] prefix.
@@ -20,6 +28,10 @@ patchesStrategicMerge:
 #- patches/cainjection_in_chartpresets.yaml
 #- patches/cainjection_in_clusterchartpresets.yaml
 #- patches/cainjection_in_appreleases.yaml
+#- patches/cainjection_in_bundles.yaml
+#- patches/cainjection_in_orders.yaml
+#- patches/cainjection_in_products.yaml
+#- patches/cainjection_in_plans.yaml
 #+kubebuilder:scaffold:crdkustomizecainjectionpatch
 
 # the following config is for teaching kustomize how to do kustomization for CRDs.

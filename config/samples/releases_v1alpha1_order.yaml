@@ -1,0 +1,12 @@
+apiVersion: releases.x-helm.dev/v1alpha1
+kind: Order
+metadata:
+  labels:
+    app.kubernetes.io/name: order
+    app.kubernetes.io/instance: order-sample
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: apimachinery
+  name: order-sample
+spec:
+  # TODO(user): Add fields here
