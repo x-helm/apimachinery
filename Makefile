@@ -40,6 +40,7 @@ help: ## Display this help.
 
 .PHONY: manifests
 manifests: controller-gen ## Generate WebhookConfiguration, ClusterRole and CustomResourceDefinition objects.
+	$(CONTROLLER_GEN) rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=crds
 	$(CONTROLLER_GEN) rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 
 .PHONY: generate
@@ -133,7 +134,7 @@ ENVTEST ?= $(LOCALBIN)/setup-envtest
 
 ## Tool Versions
 KUSTOMIZE_VERSION ?= v3.8.7
-CONTROLLER_TOOLS_VERSION ?= v0.11.1
+CONTROLLER_TOOLS_VERSION ?= ac-0.10.0
 
 KUSTOMIZE_INSTALL_SCRIPT ?= "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"
 .PHONY: kustomize
@@ -146,12 +147,27 @@ $(KUSTOMIZE): $(LOCALBIN)
 	test -s $(LOCALBIN)/kustomize || { curl -Ss $(KUSTOMIZE_INSTALL_SCRIPT) | bash -s -- $(subst v,,$(KUSTOMIZE_VERSION)) $(LOCALBIN); }
 
 .PHONY: controller-gen
-controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary. If wrong version is installed, it will be overwritten.
+controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary.
 $(CONTROLLER_GEN): $(LOCALBIN)
-	test -s $(LOCALBIN)/controller-gen && $(LOCALBIN)/controller-gen --version | grep -q $(CONTROLLER_TOOLS_VERSION) || \
-	GOBIN=$(LOCALBIN) go install sigs.k8s.io/controller-tools/cmd/controller-gen@$(CONTROLLER_TOOLS_VERSION)
+	$(call go-forked-tool,$(CONTROLLER_GEN),https://github.com/kmodules/controller-tools,$(CONTROLLER_TOOLS_VERSION))
 
 .PHONY: envtest
 envtest: $(ENVTEST) ## Download envtest-setup locally if necessary.
 $(ENVTEST): $(LOCALBIN)
 	test -s $(LOCALBIN)/setup-envtest || GOBIN=$(LOCALBIN) go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest
+
+# go-get-tool will 'go get' any package $2 and install it to $1.
+PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
+define go-forked-tool
+@[ -f $(1) ] || { \
+set -e ;\
+TMP_DIR=$$(mktemp -d) ;\
+cd $$TMP_DIR ;\
+echo "Cloning $(2)" ;\
+git clone $(2); \
+cd $$(ls -b1); \
+git checkout $(3); \
+GOBIN=$(PROJECT_DIR)/bin go install ./... ;\
+rm -rf $$TMP_DIR ;\
+}
+endef
