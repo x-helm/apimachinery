@@ -1,0 +1,12 @@
+apiVersion: drivers.x-helm.dev/v1alpha1
+kind: AppRelease
+metadata:
+  labels:
+    app.kubernetes.io/name: apprelease
+    app.kubernetes.io/instance: apprelease-sample
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: apimachinery
+  name: apprelease-sample
+spec:
+  # TODO(user): Add fields here

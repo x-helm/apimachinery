@@ -1,0 +1,27 @@
+# permissions for end users to view clusterchartpresets.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: clusterchartpreset-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: apimachinery
+    app.kubernetes.io/part-of: apimachinery
+    app.kubernetes.io/managed-by: kustomize
+  name: clusterchartpreset-viewer-role
+rules:
+- apiGroups:
+  - charts.x-helm.dev
+  resources:
+  - clusterchartpresets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - charts.x-helm.dev
+  resources:
+  - clusterchartpresets/status
+  verbs:
+  - get
