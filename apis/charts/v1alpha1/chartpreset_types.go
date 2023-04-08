@@ -18,25 +18,15 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/client-go/apiextensions"
+	"x-helm.dev/apimachinery/crds"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// ChartPresetSpec defines the desired state of ChartPreset
-type ChartPresetSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of ChartPreset. Edit chartpreset_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
-}
-
-// ChartPresetStatus defines the observed state of ChartPreset
-type ChartPresetStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-}
+const (
+	ResourceKindChartPreset = "ChartPreset"
+	ResourceChartPreset     = "chartpreset"
+	ResourceChartPresets    = "chartpresets"
+)
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
@@ -46,8 +36,7 @@ type ChartPreset struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ChartPresetSpec   `json:"spec,omitempty"`
-	Status ChartPresetStatus `json:"status,omitempty"`
+	Spec ClusterChartPresetSpec `json:"spec,omitempty"`
 }
 
 //+kubebuilder:object:root=true
@@ -61,4 +50,8 @@ type ChartPresetList struct {
 
 func init() {
 	SchemeBuilder.Register(&ChartPreset{}, &ChartPresetList{})
+}
+
+func (_ ChartPreset) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+	return crds.MustCustomResourceDefinition(GroupVersion.WithResource(ResourceChartPresets))
 }
