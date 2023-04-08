@@ -6,10 +6,18 @@ package v1alpha1
 import (
 	"regexp"
 	"strings"
-	"x-helm.dev/apimachinery/apis/shared"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/client-go/apiextensions"
+	"x-helm.dev/apimachinery/apis/shared"
+	"x-helm.dev/apimachinery/crds"
+)
+
+const (
+	ResourceKindAppRelease = "AppRelease"
+	ResourceAppRelease     = "apprelease"
+	ResourceAppReleases    = "appreleases"
 )
 
 // Constants for condition
@@ -292,6 +300,10 @@ type AppReleaseList struct {
 
 func init() {
 	SchemeBuilder.Register(&AppRelease{}, &AppReleaseList{})
+}
+
+func (_ AppRelease) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+	return crds.MustCustomResourceDefinition(GroupVersion.WithResource(ResourceAppReleases))
 }
 
 // StripVersion the version part of gv
