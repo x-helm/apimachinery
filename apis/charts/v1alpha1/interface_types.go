@@ -58,7 +58,7 @@ func (in ChartPreset) GetSpec() ClusterChartPresetSpec {
 	return in.Spec
 }
 
-type ChartPresetRef struct {
+type ChartPresetFlatRef struct {
 	releasesv1alpha1.ChartSourceFlatRef `json:",inline"`
 	PresetGroup                         string `json:"presetGroup,omitempty"`
 	PresetKind                          string `json:"presetKind,omitempty"`
@@ -67,7 +67,7 @@ type ChartPresetRef struct {
 	Namespace                           string `json:"namespace,omitempty"`
 }
 
-func (ref ChartPresetRef) ClusterChartPreset() (*ClusterChartPreset, error) {
+func (ref ChartPresetFlatRef) ClusterChartPreset() (*ClusterChartPreset, error) {
 	if ref.PresetKind != ResourceKindClusterChartPreset {
 		return nil, fmt.Errorf("unknown preset kind %s", ref.PresetKind)
 	}
