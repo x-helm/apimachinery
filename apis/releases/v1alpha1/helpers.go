@@ -4,31 +4,32 @@ import (
 	kmapi "kmodules.xyz/client-go/api/v1"
 )
 
-func (ref *ChartSourceFlatRef) SetDefaults() *ChartSourceFlatRef {
-	if ref.SourceAPIGroup == "" {
-		ref.SourceAPIGroup = "source.toolkit.fluxcd.io"
+func (ref *ChartSourceRef) SetDefaults() *ChartSourceRef {
+	if ref.SourceRef.APIGroup == "" {
+		ref.SourceRef.APIGroup = "source.toolkit.fluxcd.io"
 	}
-	if ref.SourceKind == "" {
-		ref.SourceKind = "HelmRepository"
-	} else if ref.SourceKind == "Legacy" || ref.SourceKind == "Local" || ref.SourceKind == "Embed" {
-		ref.SourceAPIGroup = "charts.x-helm.dev"
+	if ref.SourceRef.Kind == "" {
+		ref.SourceRef.Kind = "HelmRepository"
+	} else if ref.SourceRef.Kind == "Legacy" || ref.SourceRef.Kind == "Local" || ref.SourceRef.Kind == "Embed" {
+		ref.SourceRef.APIGroup = "charts.x-helm.dev"
 	}
 	return ref
 }
 
 func (ref *ChartSourceFlatRef) FromAPIObject(obj ChartSourceRef) *ChartSourceFlatRef {
+	obj.SetDefaults()
+
 	ref.Name = obj.Name
 	ref.Version = obj.Version
 	ref.SourceAPIGroup = obj.SourceRef.APIGroup
 	ref.SourceKind = obj.SourceRef.Kind
 	ref.SourceNamespace = obj.SourceRef.Namespace
 	ref.SourceName = obj.SourceRef.Name
-	return ref.SetDefaults()
+	return ref
 }
 
 func (ref *ChartSourceFlatRef) ToAPIObject() ChartSourceRef {
-	ref.SetDefaults()
-	return ChartSourceRef{
+	obj := ChartSourceRef{
 		Name:    ref.Name,
 		Version: ref.Version,
 		SourceRef: kmapi.TypedObjectReference{
@@ -38,4 +39,6 @@ func (ref *ChartSourceFlatRef) ToAPIObject() ChartSourceRef {
 			Name:      ref.Name,
 		},
 	}
+	obj.SetDefaults()
+	return obj
 }
