@@ -93,13 +93,12 @@ type BucketFileRef struct {
 }
 
 type ChartTemplate struct {
-	ChartRef    `json:",inline"`
-	Version     string           `json:"version,omitempty"`
-	ReleaseName string           `json:"releaseName,omitempty"`
-	Namespace   string           `json:"namespace,omitempty"`
-	CRDs        []BucketObject   `json:"crds,omitempty"`
-	Manifest    *BucketFileRef   `json:"manifest,omitempty"`
-	Resources   []ResourceObject `json:"resources,omitempty"`
+	ChartSourceRef `json:",inline"`
+	ReleaseName    string           `json:"releaseName,omitempty"`
+	Namespace      string           `json:"namespace,omitempty"`
+	CRDs           []BucketObject   `json:"crds,omitempty"`
+	Manifest       *BucketFileRef   `json:"manifest,omitempty"`
+	Resources      []ResourceObject `json:"resources,omitempty"`
 }
 
 type BucketFileOutput struct {
