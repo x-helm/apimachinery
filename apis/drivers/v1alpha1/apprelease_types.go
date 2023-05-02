@@ -130,8 +130,6 @@ type AppReleaseStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Type",type=string,description="The type of the appRelease",JSONPath=`.spec.descriptor.type`,priority=0
 // +kubebuilder:printcolumn:name="Version",type=string,description="The creation date",JSONPath=`.spec.descriptor.version`,priority=0
-// +kubebuilder:printcolumn:name="Owner",type=boolean,description="The appRelease object owns the matched resources",JSONPath=`.spec.addOwnerRef`,priority=0
-// +kubebuilder:printcolumn:name="Ready",type=string,description="Numbers of components ready",JSONPath=`.status.componentsReady`,priority=0
 // +kubebuilder:printcolumn:name="Age",type=date,description="The creation date",JSONPath=`.metadata.creationTimestamp`,priority=0
 
 // AppRelease is the Schema for the appReleases API
