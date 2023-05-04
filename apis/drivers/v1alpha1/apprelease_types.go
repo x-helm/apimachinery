@@ -70,10 +70,13 @@ type AppReleaseSpec struct {
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
 	Selector *metav1.LabelSelector `json:"selector,omitempty"`
 
+	Editor *metav1.GroupVersionResource `json:"editor,omitempty"`
+
 	// +optional
 	ResourceKeys []string `json:"resourceKeys,omitempty"`
 
-	Editor *metav1.GroupVersionResource `json:"editor,omitempty"`
+	// +optional
+	FormKeys []string `json:"formKeys,omitempty"`
 }
 
 type ReleaseInfo struct {
