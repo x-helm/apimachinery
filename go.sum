@@ -800,8 +800,8 @@ k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1 h1:MQ8BAZPZlWk3S9K4a9NCkI
 k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1/go.mod h1:C/N6wCaBHeBHkHUesQOQy2/MZqGgMAFPqGsGQLdbZBU=
 k8s.io/utils v0.0.0-20220823124924-e9cbc92d1a73 h1:H9TCJUUx+2VA0ZiD9lvtaX8fthFsMoD+Izn93E/hm8U=
 k8s.io/utils v0.0.0-20220823124924-e9cbc92d1a73/go.mod h1:jPW/WVKK9YHAvNhRxK0md/EJ228hCsBRufyofKtW8HA=
-kmodules.xyz/client-go v0.25.34 h1:4/98dzHp9J/sWxu5YJc37HuHBemmdlVniEDOWhWS4OE=
-kmodules.xyz/client-go v0.25.34/go.mod h1:YfMtano/sAxZqhoxtLKjvclWtNQQIa6PmkVaooo+VuI=
+kmodules.xyz/client-go v0.25.38 h1:dNGq7eAVfpeyr7EdIEq3L2WSu+AgVffZlYwyzhye29I=
+kmodules.xyz/client-go v0.25.38/go.mod h1:LkGtA7shOM9hLwc7tFUjGrIdGLEa0on5D34LF8NM4Co=
 kmodules.xyz/crd-schema-fuzz v0.25.0 h1:c5ZxNRqJak1bkGhECmyrKpzKGThFMB4088Kynyvngbc=
 kmodules.xyz/crd-schema-fuzz v0.25.0/go.mod h1:VigFz19GwCxMGhb3YjCtlSXmfXb0J/g9du1So6rvqsk=
 rsc.io/binaryregexp v0.2.0/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
