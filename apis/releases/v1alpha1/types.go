@@ -25,15 +25,6 @@ const (
 	SourceGroupHelmRepository = "source.toolkit.fluxcd.io"
 	SourceKindHelmRepository  = "HelmRepository"
 
-	BootstrapHelmRepositoryName       = "bootstrap"
-	EnvVarBootstrapHelmRepositoryName = "BOOTSTRAP_HELM_REPOSITORY_NAME"
-
-	BootstrapHelmRepositoryNamespace       = "kubeops"
-	EnvVarBootstrapHelmRepositoryNamespace = "BOOTSTRAP_HELM_REPOSITORY_NAMESPACE"
-
-	FluxCDHelmRepositoryName       = "fluxcd-community"
-	EnvVarFluxcdHelmRepositoryName = "FLUXCD_HELM_REPOSITORY_NAME"
-
 	SourceGroupLegacy = "charts.x-helm.dev"
 	SourceKindLegacy  = "Legacy"
 	SourceKindLocal   = "Local"
