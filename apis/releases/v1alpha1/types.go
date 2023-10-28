@@ -32,7 +32,7 @@ const (
 	EnvVarBootstrapHelmRepositoryNamespace = "BOOTSTRAP_HELM_REPOSITORY_NAMESPACE"
 
 	FluxCDHelmRepositoryName       = "fluxcd-community"
-	EnvVarFluxCDHelmRepositoryName = "FLUX_CD_HELM_REPOSITORY_NAME"
+	EnvVarFluxcdHelmRepositoryName = "FLUXCD_HELM_REPOSITORY_NAME"
 
 	SourceGroupLegacy = "charts.x-helm.dev"
 	SourceKindLegacy  = "Legacy"
